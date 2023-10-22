@@ -1,6 +1,6 @@
 # PrizVideo
 Don't like Google tracking you down on YouTube? Don't like ads either? We gotchu. 
-PrizVideo is an online video broadcasting website, which is ad free. It also has a remarkable algorithm to give you to best videos for you.
+PrizVideo is an online video broadcasting website, which is ad free. It also has a remarkable algorithm to give you the best videos for you.
 
 ## Accounts
 How is anyone gonna briadcast if you don't have an account? That's the thing- you don't need an account to watch videos, like them, comment, anything! In order to upload videos, however, you do need an account (it's free). If you are creating an account for orgs, look for "Organization Accounts" below. In order to create an account in the current beta stage, you will need to email us. From there, we will send a response email telling you your account has been created and how to access it.
