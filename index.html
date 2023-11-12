@@ -11,9 +11,20 @@
     <meta type="twitter:description" content="PrizVideo is an interactive, ad-free, video broadcasting service owned by Forjed.">
   </head>
   <body>
-	<hr>
-	<p>Hi! This is not working, but the PrizVideo team is working on that. So, if you'd like, you can adventure this (currently tiny and somewhat working) site.</p>
-	<script src="load.js"></script>
+	<script>
+		document.onload = homepage() {
+			const line = document.createElement("hr");
+			line.className = "breakline";
+			const empty = document.createElement("br");
+			empty.className = "emptyness";
+			const greet = document.createElement("p");
+			greet.innerHTML = "Hi! Although there may not be much to see, you can explore the site, as of now. See ya later!";
+			
+			body.appendChild(line);
+			body.appendChild(empty);
+			body.appendChild(greet);
+		});
+	</script>
 	<style>
 * {
 	font-family: Arial;
