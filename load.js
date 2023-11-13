@@ -1,82 +1,70 @@
-document.addEventListener("DOMContentLoaded", function() {
- 	// Create the top-bar dynamically
-        const topBar = document.createElement("div");
-        topBar.className = "top-bar";
+document.addEventListener("DOMContentLoaded", function () {
+  function createElement(tag, attributes = {}) {
+    const element = document.createElement(tag);
+    for (const key in attributes) {
+      element[key] = attributes[key];
+    }
+    return element;
+  }
 
-        const logo = document.createElement("span");
-        logo.className = "logo";
-        const logoLink = document.createElement("a");
-        logoLink.href = "https://prizvideo.github.io/PrizVideo-Main/";
-        logoLink.style.textDecoration = "none"; // Remove underline
-        logoLink.style.color = "black"; // Set text color to black
-        logoLink.innerHTML = "<b>PrizVideo Beta⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</b>";
-        logo.appendChild(logoLink);
+  const topBar = createElement("div", { className: "top-bar" });
 
-        const searchInput = document.createElement("input");
-        searchInput.type = "search";
-        searchInput.style.width = "250px"; // Reduce width
-        searchInput.style.height = "40px"; // Reduce height
+  const logo = createElement("div", { className: "logo" });
+  const logoLink = createElement("a", {
+    href: "https://prizvideo.github.io/PrizVideo-Main/",
+    style: "text-decoration: none; color: black;",
+    innerHTML: "<b>PrizVideo Beta</b>",
+  });
+  logo.appendChild(logoLink);
 
-        const searchButton = document.createElement("button");
-        searchButton.innerHTML = "Search";
-        searchButton.style.height = "40px"; // Reduce height
-        searchButton.style.marginRight = "10px"; // Increase spacing
-        searchButton.onclick = function () {
-            searchresults();
-        };
+  const searchInput = createElement("input", {
+    type: "search",
+    placeholder: "Search",
+  });
 
-        const liveTVButton = document.createElement("button");
-        liveTVButton.innerHTML = "Live TV";
-        liveTVButton.style.height = "40px"; // Reduce height
-        liveTVButton.style.marginRight = "10px"; // Increase spacing
+  const searchButton = createElement("button", {
+    innerHTML: "Search",
+    onclick: function () {
+      searchresults();
+    },
+  });
 
-        const optionsButton = document.createElement("button");
-        optionsButton.innerHTML = "Options";
-        optionsButton.style.height = "40px"; // Reduce height
-        optionsButton.onclick = function () {
-            options();
-        };
-  
-        const breakerEmpty = document.createElement("br");
+  const liveTVButton = createElement("button", {
+    innerHTML: "Live TV",
+  });
 
-        const breakerLine = document.createElement("hr");
+  const optionsButton = createElement("button", {
+    innerHTML: "Options",
+    onclick: function () {
+      options();
+    },
+  });
 
-        topBar.appendChild(logo);
-        topBar.appendChild(searchInput);
-        topBar.appendChild(searchButton);
-        topBar.appendChild(liveTVButton);
-        topBar.appendChild(optionsButton);
-        topBar.appendChild(breakerEmpty);
-        topBar.appendChild(breakerLine);
- 
-        const infoArea = document.createElement("div");
-        infoArea.className = "info-area";
+  topBar.append(logo, searchInput, searchButton, liveTVButton, optionsButton);
 
-        const infoTextBox = document.createElement("div");
-        infoTextBox.style.margin = "auto";
-        infoTextBox.style.border = "2px solid black";
-        infoTextBox.style.borderRadius = "4px";
-        infoTextBox.style.backgroundColor = "#D3D3D3";
-        const infoText = document.createElement("p");
-        infoText.innerHTML = "Hello! This is still in a testing phase, and it is impossible to create an account, nor upload. However, you can enjoy the work we are putting into it by exploring the site. Goodbye!";
-        infoText.style.textAlign = "center";
-        infoTextBox.appendChild(infoText);
+  const infoArea = createElement("div", { className: "info-area" });
 
-        const footer = document.createElement('footer');
-        footer.style.color = '#fff';
-        footer.style.display = 'flex';
-        footer.style.alignItems = 'center';
-        footer.style.justifyContent = 'space-between';
-        footer.style.padding = '0.025rem';
-        footer.style.position = 'fixed';
-        footer.style.bottom = '0';
-        footer.style.width = '100%';
-        footer.innerHTML = '<hr><p>PrizVideo 2023</p>';
+  const infoTextBox = createElement("div", {
+    style:
+      "margin: auto; border: 2px solid black; border-radius: 4px; background-color: #D3D3D3; padding: 10px;",
+  });
 
-        infoArea.appendChild(footer);
-        infoArea.appendChild(infoTextBox);
- 
-        // Append the top-bar to the body
-        document.body.appendChild(topBar);
-        document.body.appendChild(infoArea);
+  const infoText = createElement("p", {
+    innerHTML:
+      "Hello! This is still in a testing phase, and it is impossible to create an account, nor upload. However, you can enjoy the work we are putting into it by exploring the site. Goodbye!",
+    style: "text-align: center;",
+  });
+
+  infoTextBox.appendChild(infoText);
+
+  // Create the footer dynamically
+  const footer = createElement("footer", {
+    style:
+      "color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0.025rem; position: fixed; bottom: 0; width: 100%; background-color: #333;",
+    innerHTML: "<hr><p>PrizVideo 2023</p>",
+  });
+
+  infoArea.append(footer, infoTextBox);
+
+  document.body.append(topBar, infoArea);
 });
