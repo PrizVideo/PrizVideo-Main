@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function() {
         liveTVButton.innerHTML = "Live TV";
         liveTVButton.style.height = "40px"; // Reduce height
         liveTVButton.style.marginRight = "10px"; // Increase spacing
-        liveTVButton.style.textAlign = "right";
+        liveTVButton.style.float = "right";
 
         const optionsButton = document.createElement("button");
         optionsButton.innerHTML = "Options";
         optionsButton.style.height = "40px"; // Reduce height
-        optionsButton.style.textAlign = "right";
+        optionsButton.style.float = "right";
         optionsButton.onclick = function () {
             options();
         };
