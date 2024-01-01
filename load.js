@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return element;
   }
 
-  let isDarkMode = false;
+  let isDarkMode = true;
 
   function toggleDarkMode() {
     isDarkMode = !isDarkMode;
