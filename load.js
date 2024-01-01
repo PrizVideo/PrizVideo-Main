@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.backgroundColor = isDarkMode ? "#1a1a1a" : "#ffffff";
     document.body.style.color = isDarkMode ? "#ffffff" : "#000000";
 
+    updateOptionsMenu();
+    
     localStorage.setItem("darkMode", isDarkMode ? "on" : "off");
   }
 
@@ -97,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
       `,
     });
 
@@ -108,42 +111,65 @@ document.addEventListener("DOMContentLoaded", function () {
       `,
     });
 
-    const accountButton = createElement("button", {
-      innerHTML: "Account Page",
-      onclick: function () {
-      },
+    const optionsPanelText = createElement("h2", {
+      innerHTML: "Options Panel",
+      style: "margin-bottom: 20px;",
     });
 
-    const historyButton = createElement("button", {
-      innerHTML: "History Page",
-      onclick: function () {
-      },
-    });
-
-    const librariesButton = createElement("button", {
-      innerHTML: "Libraries Page",
-      onclick: function () {
-      },
-    });
-
-    const darkModeToggle = createElement("label", {
+    const darkModeToggleLabel = createElement("label", {
       innerHTML: "Dark Mode",
-      style: "margin-top: 10px; display: block;",
+      style: "margin-bottom: 10px; display: block;",
     });
 
     const darkModeSwitch = createElement("input", {
       type: "checkbox",
+      id: "darkModeSwitch",
       checked: isDarkMode,
       onchange: function () {
         toggleDarkMode();
       },
     });
 
-    darkModeToggle.appendChild(darkModeSwitch);
+    darkModeToggleLabel.appendChild(darkModeSwitch);
 
-    optionsContent.append(accountButton, historyButton, librariesButton, darkModeToggle);
+    const accountButton = createElement("button", {
+      innerHTML: "Account Page",
+      onclick: function () {
+        // Navigate to account page
+      },
+    });
+
+    const historyButton = createElement("button", {
+      innerHTML: "History Page",
+      onclick: function () {
+        // Navigate to history page
+      },
+    });
+
+    const librariesButton = createElement("button", {
+      innerHTML: "Libraries Page",
+      onclick: function () {
+        // Navigate to libraries page
+      },
+    });
+
+    const exitButton = createElement("button", {
+      innerHTML: "Exit",
+      onclick: function () {
+        document.body.removeChild(optionsMenu);
+      },
+    });
+
+    optionsContent.append(optionsPanelText, darkModeToggleLabel, accountButton, historyButton, librariesButton, exitButton);
 
     optionsMenu.appendChild(optionsContent);
     document.body.appendChild(optionsMenu);
+  }
+
+  function updateOptionsMenu() {
+    const darkModeSwitch = document.querySelector("#darkModeSwitch");
+    if (darkModeSwitch) {
+      darkModeSwitch.checked = isDarkMode;
+    }
   }
 });
