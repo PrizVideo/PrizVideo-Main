@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const footer = createElement("footer", {
     style: "color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0.025rem; position: fixed; bottom: 0; width: 100%; background-color: #333;",
-    innerHTML: "<hr><p>PrizVideo 2023</p>",
+    innerHTML: "<hr><p>© Copyright PrizVideo 2024</p>",
   });
 
   infoArea.append(footer, infoTextBox);
