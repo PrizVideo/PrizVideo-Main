@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function toggleDarkMode() {
     isDarkMode = !isDarkMode;
-    
+
     document.body.style.backgroundColor = isDarkMode ? "#1a1a1a" : "#ffffff";
     document.body.style.color = isDarkMode ? "#ffffff" : "#000000";
 
     updateOptionsMenu();
-    
+
     localStorage.setItem("darkMode", isDarkMode ? "on" : "off");
   }
 
@@ -64,8 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const infoArea = createElement("div", { className: "info-area" });
 
   const infoTextBox = createElement("div", {
-    style:
-      `margin: auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
+    style: `margin: auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
   });
 
   const infoText = createElement("p", {
@@ -77,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
   infoTextBox.appendChild(infoText);
 
   const footer = createElement("footer", {
-    style:
-      "color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0.025rem; position: fixed; bottom: 0; width: 100%; background-color: #333;",
+    style: "color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0.025rem; position: fixed; bottom: 0; width: 100%; background-color: #333;",
     innerHTML: "<hr><p>PrizVideo 2023</p>",
   });
 
@@ -88,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showOptions() {
     const optionsMenu = createElement("div", {
+      className: "options-menu",
       style: `
         position: fixed;
         top: 0;
@@ -110,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 10);
 
     const optionsContent = createElement("div", {
+      className: "options-content",
       style: `
         background: ${isDarkMode ? "#1a1a1a" : "white"};
         padding: 20px;
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const darkModeToggleLabel = createElement("label", {
       innerHTML: "Dark Mode",
-      style: "margin-bottom: 10px; display: block;",
+      style: "margin-bottom: 10px; display: block; color: " + (isDarkMode ? "#ffffff" : "#000000"),
     });
 
     const darkModeSwitch = createElement("input", {
@@ -181,6 +181,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const darkModeSwitch = document.querySelector("#darkModeSwitch");
     if (darkModeSwitch) {
       darkModeSwitch.checked = isDarkMode;
+    }
+
+    const optionsContent = document.querySelector(".options-content");
+    if (optionsContent) {
+      optionsContent.style.background = isDarkMode ? "#1a1a1a" : "white";
+      optionsContent.style.color = isDarkMode ? "#ffffff" : "#000000";
     }
   }
 });
