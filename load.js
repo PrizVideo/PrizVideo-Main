@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const logo = createElement("div", { className: "logo" });
   const logoLink = createElement("a", {
     href: "https://prizvideo.github.io/PrizVideo-Main/",
-    style: "text-decoration: none; color: black;",
+    style: `text-decoration: none; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
     innerHTML: "<b>PrizVideo Beta</b>",
   });
   logo.appendChild(logoLink);
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const infoTextBox = createElement("div", {
     style:
-      "margin: auto; border: 2px solid black; border-radius: 4px; background-color: #D3D3D3; padding: 10px;",
+      `margin: auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
   });
 
   const infoText = createElement("p", {
@@ -100,14 +100,22 @@ document.addEventListener("DOMContentLoaded", function () {
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
       `,
     });
 
+    setTimeout(() => {
+      optionsMenu.style.opacity = "1";
+    }, 10);
+
     const optionsContent = createElement("div", {
       style: `
-        background: white;
+        background: ${isDarkMode ? "#1a1a1a" : "white"};
         padding: 20px;
         border-radius: 10px;
+        color: ${isDarkMode ? "#ffffff" : "#000000"};
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
       `,
     });
 
@@ -135,28 +143,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const accountButton = createElement("button", {
       innerHTML: "Account Page",
       onclick: function () {
-        // Navigate to account page
+        // navigate to account page
       },
     });
 
     const historyButton = createElement("button", {
       innerHTML: "History Page",
       onclick: function () {
-        // Navigate to history page
+        // navigate to history page
       },
     });
 
     const librariesButton = createElement("button", {
       innerHTML: "Libraries Page",
       onclick: function () {
-        // Navigate to libraries page
+        // nacigate to libraries page
       },
     });
 
     const exitButton = createElement("button", {
       innerHTML: "Exit",
       onclick: function () {
-        document.body.removeChild(optionsMenu);
+        optionsMenu.style.opacity = "0";
+        setTimeout(() => {
+          document.body.removeChild(optionsMenu);
+        }, 300);
       },
     });
 
