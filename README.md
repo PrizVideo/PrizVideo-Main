@@ -1,19 +1,12 @@
-# PrizVideo
-Don't like Google tracking you down on YouTube? Don't like ads either? We gotchu. 
-PrizVideo is an online video broadcasting website, which is ad free. It also has a remarkable algorithm to give you the best videos for you.
-
-## Accounts
-How is anyone gonna briadcast if you don't have an account? That's the thing- you don't need an account to watch videos, like them, comment, anything! In order to upload videos, however, you do need an account (it's free). If you are creating an account for orgs, look for "Organization Accounts" below. In order to create an account in the current beta stage, you will need to email us. From there, we will send a response email telling you your account has been created and how to access it.
-
-### Organization Accounts
-In order to make org accounts, you need to email us, specifically requesting an organization account. We will email back asking you what your org does and it's name (so we can make sure you exist and give your account a label as to what it's purpose is on the account page). From there, the organization account will be created and your organization will be given instructions on how to access the account.
-
-## Video Integration
-With our integratable video player, you can insert videos on any website! When you click the options button on the very right of the title, there will be an option called "Embed Video". When you click this, a piece of HTML code will be copied to your device's digital clipboard. You can paste this to add our ad-free video player to your site, in the area which you want it to go.
-
-### Embedded Video Manual
-[Adding Soon]
-
-## Searching
-The search engine in PrizVideo is a special version of Resulli- made just for looking up videos on PrizVideo! 
-
+# PrizVideo Extravaganza 🚀
+Tired of being stalked by Google on YouTube? Annoyed by ads popping up everywhere? Fear not! Welcome to PrizVideo, the hippest online video broadcasting platform where ads dare not intrude. Our exceptional algorithm ensures you get the crème de la crème of videos tailored just for you.
+## Dive In, No Strings Attached!
+Who needs an account to watch, like, or comment? Not you! No strings attached. To upload videos, a free account is your golden ticket. For the beta stage, email us to join the exclusive club. We'll respond with the secret code to unveil your account, just like in a spy movie.
+## Exclusive Org Accounts
+Organizations, we've got your back! Shoot us an email for a VIP "Organization Account." We'll verify your existence and purpose, labeling your account accordingly. Your organization will receive top-secret instructions on accessing the account.
+## Seamless Video Integration
+Say hello to our fancy video player that can dance on any website! Click the magic options button on the far right, select "Embed Video," and voilà! Copy the HTML code that appears, and bam! Your site just got an upgrade with our ad-free video player.
+### Embed Magic Manual
+[Coming Soon - Stay tuned for the enchanting guide!]
+## Hunt for Videos with Resulti
+PrizVideo's search engine, a Resulti masterpiece, is your personal video hunter. No more generic searches – just pristine results for your PrizVideo adventure!
