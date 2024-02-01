@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   topBar.append(logo, searchInput, searchButton, liveTVButton, optionsButton);
 
+  const infoArea = createElement("div", { className: "info-area" });
+
   const infoTextBox = createElement("div", {
     style: `margin: auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
   });
@@ -78,43 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
     innerHTML: "<hr><p>© Copyright PrizVideo 2024</p>",
   });
 
-  const infoArea = createElement("div", { className: "info-area" });
-
   infoArea.append(footer, infoTextBox);
 
   document.body.append(topBar, infoArea);
-
-  function showVideoFeed() {
-    const videoFeedContainer = createElement("div", { className: "video-feed-container" });
-
-    // Sample data for demonstration purposes
-    const sampleVideos = [
-      { title: "Video 1", description: "Description 1", imageUrl: "sample1.jpg" },
-      { title: "Video 2", description: "Description 2", imageUrl: "sample2.jpg" },
-      { title: "Video 3", description: "Description 3", imageUrl: "sample3.jpg" },
-      // Add more video data as needed
-    ];
-
-    sampleVideos.forEach(video => {
-      const videoContainer = createElement("div", { className: "video-container" });
-
-      const videoImage = createElement("img", {
-        src: video.imageUrl,
-        alt: "Sample Image",
-        style: "width: 100%; height: 150px; object-fit: cover;",
-      });
-
-      const videoTitle = createElement("h3", { innerHTML: video.title });
-      const videoDescription = createElement("p", { innerHTML: video.description });
-
-      videoContainer.append(videoImage, videoTitle, videoDescription);
-      videoFeedContainer.appendChild(videoContainer);
-    });
-
-    document.body.appendChild(videoFeedContainer);
-  }
-
-  showVideoFeed(); // Add this line to display the video feed below infoTextBox
 
   function showOptions() {
     const optionsMenu = createElement("div", {
@@ -201,3 +169,24 @@ document.addEventListener("DOMContentLoaded", function () {
           document.body.removeChild(optionsMenu);
         }, 300);
       },
+    });
+
+    optionsContent.append(optionsPanelText, darkModeToggleLabel, accountButton, historyButton, librariesButton, exitButton);
+
+    optionsMenu.appendChild(optionsContent);
+    document.body.appendChild(optionsMenu);
+  }
+
+  function updateOptionsMenu() {
+    const darkModeSwitch = document.querySelector("#darkModeSwitch");
+    if (darkModeSwitch) {
+      darkModeSwitch.checked = isDarkMode;
+    }
+
+    const optionsContent = document.querySelector(".options-content");
+    if (optionsContent) {
+      optionsContent.style.background = isDarkMode ? "#1a1a1a" : "white";
+      optionsContent.style.color = isDarkMode ? "#ffffff" : "#000000";
+    }
+  }
+});
