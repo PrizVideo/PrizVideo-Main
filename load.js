@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const infoArea = createElement("div", { className: "info-area" });
 
   const infoTextBox = createElement("div", {
-    style: `margin: auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
+    style: `margin: 2px auto 2px auto; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
   });
 
   const infoText = createElement("p", {
