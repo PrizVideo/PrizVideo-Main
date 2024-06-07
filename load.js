@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleDarkMode() {
     isDarkMode = !isDarkMode;
 
-    document.body.style.backgroundColor = isDarkMode ? "#1a1a1a" : "#ffffff";
-    document.body.style.color = isDarkMode ? "#ffffff" : "#000000";
+    document.body.style.backgroundColor = isDarkMode ? "#fbfbfb" : "#ffffff";
+    document.body.style.color = isDarkMode ? "#000000" : "#000000";
 
     updateOptionsMenu();
 
