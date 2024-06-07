@@ -68,8 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const infoText = createElement("p", {
-    innerHTML:
-      "Hello! This is still in a testing phase, and it is impossible to create an account, nor upload. However, you can enjoy the work we are putting into it by exploring the site. Goodbye!",
     style: "text-align: center;",
   });
 
@@ -176,6 +174,14 @@ document.addEventListener("DOMContentLoaded", function () {
     optionsMenu.appendChild(optionsContent);
     document.body.appendChild(optionsMenu);
   }
+
+  window.addEventListener('load', function(e) {
+    if (navigator.onLine) {
+      infoTextBox.innerHTML = "There seems to be an error on our end. Please wait a moment and try again.";
+    } else {
+      infoTextBox.innerHTML = "You are not connected to the internet. PrizVideo cannot load without internet.";
+    }
+  }, false);
 
   function updateOptionsMenu() {
     const darkModeSwitch = document.querySelector("#darkModeSwitch");
