@@ -8,5 +8,5 @@ Organizations, we've got your back! Shoot us an email for a VIP "Organization Ac
 Say hello to our fancy video player that can dance on any website! Click the magic options button on the far right, select "Embed Video," and voilà! Copy the HTML code that appears, and bam! Your site just got an upgrade with our ad-free video player.
 ### Embed Magic Manual
 [Coming Soon - Stay tuned for the enchanting guide!]
-## Hunt for Videos with Resulti
-PrizVideo's search engine, a Resulti masterpiece, is your personal video hunter. No more generic searches – just pristine results for your PrizVideo adventure!
+## Hunt for Videos with Orbito 2.0
+PrizVideo's search engine, an Orbito 2.0 masterpiece, is your personal video hunter. No more generic searches – just pristine results for your PrizVideo adventure!
