@@ -1,6 +1,5 @@
 # PrizVideo
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/PrizVideo/PrizVideo-Main)
 ![GitHub issues](https://img.shields.io/github/issues/PrizVideo/PrizVideo-Main)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/PrizVideo/PrizVideo-Main)
 ![GitHub license](https://img.shields.io/github/license/PrizVideo/PrizVideo-Main)
