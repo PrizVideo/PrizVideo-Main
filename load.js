@@ -2,186 +2,323 @@ document.addEventListener("DOMContentLoaded", function () {
   function createElement(tag, attributes = {}) {
     const element = document.createElement(tag);
     for (const key in attributes) {
-      element[key] = attributes[key];
+      if (key === 'style' && typeof attributes[key] === 'object') {
+        Object.assign(element.style, attributes[key]);
+      } else {
+        element[key] = attributes[key];
+      }
     }
     return element;
   }
 
-  let isDarkMode = true;
+  let isDarkMode = localStorage.getItem("darkMode") === "on" || false;
+
+  const theme = {
+    light: {
+      background: "#ffffff",
+      text: "#000000",
+      infoBox: "#f0f0f0",
+      menuBackground: "#ffffff"
+    },
+    dark: {
+      background: "#121212",
+      text: "#ffffff",
+      infoBox: "#1a1a1a",
+      menuBackground: "#1a1a1a"
+    }
+  };
 
   function toggleDarkMode() {
     isDarkMode = !isDarkMode;
-
-    document.body.style.backgroundColor = isDarkMode ? "#fbfbfb" : "#ffffff";
-    document.body.style.color = isDarkMode ? "#000000" : "#000000";
-
-    updateOptionsMenu();
-
+    applyTheme();
     localStorage.setItem("darkMode", isDarkMode ? "on" : "off");
   }
 
-  const savedDarkMode = localStorage.getItem("darkMode");
-  if (savedDarkMode) {
-    isDarkMode = savedDarkMode === "on";
-    toggleDarkMode();
+  function applyTheme() {
+    const currentTheme = isDarkMode ? theme.dark : theme.light;
+    document.body.style.backgroundColor = currentTheme.background;
+    document.body.style.color = currentTheme.text;
+    
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+      logoLink.style.color = currentTheme.text;
+    }
+
+    const infoTextBox = document.querySelector('.info-box');
+    if (infoTextBox) {
+      infoTextBox.style.backgroundColor = currentTheme.infoBox;
+      infoTextBox.style.color = currentTheme.text;
+    }
+
+    updateOptionsMenu();
   }
 
-  const topBar = createElement("div", { className: "top-bar" });
+  const topBar = createElement("div", { 
+    className: "top-bar",
+    style: {
+      display: "flex",
+      alignItems: "center",
+      padding: "10px",
+      gap: "10px",
+      backgroundColor: "#333"
+    }
+  });
 
   const logo = createElement("div", { className: "logo" });
   const logoLink = createElement("a", {
     href: "https://prizvideo.github.io/PrizVideo-Main/",
-    style: `text-decoration: none; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
-    innerHTML: "<b>PrizVideo Beta</b>",
+    style: {
+      textDecoration: "none",
+      color: "#ffffff",
+      fontWeight: "bold"
+    },
+    innerHTML: "PrizVideo Beta"
   });
   logo.appendChild(logoLink);
+
+  const searchContainer = createElement("div", {
+    style: {
+      display: "flex",
+      gap: "5px",
+      flex: "1"
+    }
+  });
 
   const searchInput = createElement("input", {
     type: "search",
     placeholder: "Search",
+    style: {
+      padding: "5px",
+      borderRadius: "4px",
+      border: "1px solid #ccc",
+      flex: "1"
+    }
   });
 
   const searchButton = createElement("button", {
     innerHTML: "Search",
     onclick: function () {
-      searchresults();
+      if (typeof searchresults === 'function') {
+        searchresults();
+      } else {
+        console.warn('Search function not defined');
+      }
     },
+    style: {
+      padding: "5px 10px",
+      borderRadius: "4px",
+      cursor: "pointer"
+    }
+  });
+
+  searchContainer.append(searchInput, searchButton);
+
+  const buttonContainer = createElement("div", {
+    style: {
+      display: "flex",
+      gap: "5px"
+    }
   });
 
   const liveTVButton = createElement("button", {
     innerHTML: "Live TV",
+    style: {
+      padding: "5px 10px",
+      borderRadius: "4px",
+      cursor: "pointer"
+    }
   });
 
   const optionsButton = createElement("button", {
     innerHTML: "Options",
-    onclick: function () {
-      showOptions();
-    },
+    onclick: showOptions,
+    style: {
+      padding: "5px 10px",
+      borderRadius: "4px",
+      cursor: "pointer"
+    }
   });
 
-  topBar.append(logo, searchInput, searchButton, liveTVButton, optionsButton);
+  buttonContainer.append(liveTVButton, optionsButton);
+  topBar.append(logo, searchContainer, buttonContainer);
 
-  const infoArea = createElement("div", { className: "info-area" });
+  const infoArea = createElement("div", { 
+    className: "info-area",
+    style: {
+      margin: "20px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "20px"
+    }
+  });
 
   const infoTextBox = createElement("div", {
-    style: `margin: auto 10px auto 10px; border: 2px solid black; border-radius: 4px; background-color: ${isDarkMode ? "#1a1a1a" : "#D3D3D3"}; padding: 10px; color: ${isDarkMode ? "#ffffff" : "#000000"};`,
+    className: "info-box",
+    style: {
+      margin: "auto 10px",
+      border: "2px solid black",
+      borderRadius: "4px",
+      padding: "20px",
+      textAlign: "center"
+    }
   });
-
-  const infoText = createElement("p", {
-    style: "text-align: center;",
-  });
-
-  infoTextBox.appendChild(infoText);
 
   const footer = createElement("footer", {
-    style: "color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0.025rem; position: fixed; bottom: 0; width: 100%; background-color: #333;",
-    innerHTML: "<hr><p>© Copyright PrizVideo 2024</p>",
+    style: {
+      color: "#fff",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "10px",
+      position: "fixed",
+      bottom: "0",
+      width: "100%",
+      backgroundColor: "#333",
+      zIndex: "1000"
+    },
+    innerHTML: "<p>© Copyright PrizVideo 2024</p>"
   });
 
-  infoArea.append(footer, infoTextBox);
-
+  infoArea.append(infoTextBox, footer);
   document.body.append(topBar, infoArea);
 
   function showOptions() {
+    const existingMenu = document.querySelector('.options-menu');
+    if (existingMenu) {
+      existingMenu.remove();
+      return;
+    }
+
     const optionsMenu = createElement("div", {
       className: "options-menu",
-      style: `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-      `,
+      style: {
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
+        height: "100%",
+        background: "rgba(0, 0, 0, 0.5)",
+        backdropFilter: "blur(5px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: "2000",
+        opacity: "0",
+        transition: "opacity 0.3s ease-in-out"
+      }
     });
-
-    setTimeout(() => {
-      optionsMenu.style.opacity = "1";
-    }, 10);
 
     const optionsContent = createElement("div", {
       className: "options-content",
-      style: `
-        background: ${isDarkMode ? "#1a1a1a" : "white"};
-        padding: 20px;
-        border-radius: 10px;
-        color: ${isDarkMode ? "#ffffff" : "#000000"};
-        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-      `,
+      style: {
+        background: isDarkMode ? theme.dark.menuBackground : theme.light.menuBackground,
+        padding: "30px",
+        borderRadius: "10px",
+        color: isDarkMode ? theme.dark.text : theme.light.text,
+        display: "flex",
+        flexDirection: "column",
+        gap: "15px",
+        minWidth: "300px"
+      }
     });
 
     const optionsPanelText = createElement("h2", {
       innerHTML: "Options Panel",
-      style: "margin-bottom: 20px;",
+      style: {
+        marginBottom: "20px",
+        textAlign: "center"
+      }
+    });
+
+    const darkModeContainer = createElement("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: "10px"
+      }
     });
 
     const darkModeToggleLabel = createElement("label", {
       innerHTML: "Dark Mode",
-      style: "margin-bottom: 10px; display: block; color: " + (isDarkMode ? "#ffffff" : "#000000"),
+      style: {
+        cursor: "pointer"
+      }
     });
 
     const darkModeSwitch = createElement("input", {
       type: "checkbox",
       id: "darkModeSwitch",
       checked: isDarkMode,
-      onchange: function () {
-        toggleDarkMode();
-      },
+      onchange: toggleDarkMode,
+      style: {
+        cursor: "pointer"
+      }
     });
 
-    darkModeToggleLabel.appendChild(darkModeSwitch);
+    darkModeContainer.append(darkModeToggleLabel, darkModeSwitch);
 
-    const accountButton = createElement("button", {
-      innerHTML: "Account Page",
-      onclick: function () {
-        // Navigate to account page
-      },
-    });
-
-    const historyButton = createElement("button", {
-      innerHTML: "History Page",
-      onclick: function () {
-        // Navigate to history page
-      },
-    });
-
-    const librariesButton = createElement("button", {
-      innerHTML: "Libraries Page",
-      onclick: function () {
-        // Navigate to libraries page
-      },
-    });
+    const navigationButtons = [
+      { text: "Account", action: () => console.log("Navigate to account") },
+      { text: "History", action: () => console.log("Navigate to history") },
+      { text: "Libraries", action: () => console.log("Navigate to libraries") }
+    ].map(({ text, action }) => 
+      createElement("button", {
+        innerHTML: text,
+        onclick: action,
+        style: {
+          padding: "8px",
+          borderRadius: "4px",
+          cursor: "pointer",
+          width: "100%"
+        }
+      })
+    );
 
     const exitButton = createElement("button", {
       innerHTML: "Exit",
-      onclick: function () {
+      onclick: () => {
         optionsMenu.style.opacity = "0";
-        setTimeout(() => {
-          document.body.removeChild(optionsMenu);
-        }, 300);
+        setTimeout(() => optionsMenu.remove(), 300);
       },
+      style: {
+        padding: "8px",
+        borderRadius: "4px",
+        cursor: "pointer",
+        marginTop: "10px",
+        backgroundColor: "#ff4444",
+        color: "white",
+        border: "none"
+      }
     });
 
-    optionsContent.append(optionsPanelText, darkModeToggleLabel, accountButton, historyButton, librariesButton, exitButton);
+    optionsContent.append(
+      optionsPanelText,
+      darkModeContainer,
+      ...navigationButtons,
+      exitButton
+    );
 
     optionsMenu.appendChild(optionsContent);
     document.body.appendChild(optionsMenu);
+    
+    setTimeout(() => {
+      optionsMenu.style.opacity = "1";
+    }, 10);
   }
 
-  window.addEventListener('load', function(e) {
-    if (navigator.onLine) {
-      infoTextBox.innerHTML = "There seems to be an error on our end. Please wait a moment and try again.";
-    } else {
-      infoTextBox.innerHTML = "You are not connected to the internet. PrizVideo cannot load without internet.";
+  function updateConnectionStatus() {
+    const message = navigator.onLine
+      ? "There seems to be an error on our end. Please wait a moment and try again."
+      : "You are not connected to the internet. PrizVideo cannot load without internet.";
+    
+    if (infoTextBox) {
+      infoTextBox.innerHTML = message;
     }
-  }, false);
+  }
+
+  window.addEventListener('load', updateConnectionStatus);
+  window.addEventListener('online', updateConnectionStatus);
+  window.addEventListener('offline', updateConnectionStatus);
 
   function updateOptionsMenu() {
     const darkModeSwitch = document.querySelector("#darkModeSwitch");
@@ -191,8 +328,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const optionsContent = document.querySelector(".options-content");
     if (optionsContent) {
-      optionsContent.style.background = isDarkMode ? "#1a1a1a" : "white";
-      optionsContent.style.color = isDarkMode ? "#ffffff" : "#000000";
+      optionsContent.style.background = isDarkMode ? theme.dark.menuBackground : theme.light.menuBackground;
+      optionsContent.style.color = isDarkMode ? theme.dark.text : theme.light.text;
     }
   }
+
+  applyTheme();
 });
