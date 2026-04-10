@@ -5,24 +5,26 @@
 ![GitHub license](https://img.shields.io/github/license/PrizVideo/PrizVideo-Main)
 ![GitHub last commit](https://img.shields.io/github/last-commit/PrizVideo/PrizVideo-Main)
 
-Welcome to PrizVideo, the premier online video broadcasting platform designed to offer an ad-free viewing experience. Our advanced algorithm ensures you receive high-quality video recommendations tailored to your preferences.
+PrizVideo is a simple, privacy-based, ad-free video platform focused on making watching and sharing videos feel easy again. No clutter, no distractions. Just content.
 
 ## Watch Without Hassle
 
-Enjoy watching, liking, and commenting on videos without the need for an account. To upload videos, a free account is required. During the beta stage, please email us to join. We will respond with an access code to activate your account.
+You can watch, like, and comment on videos without creating an account. If you want to upload videos, make watchlists, or use the cooler functions of PrizVideo, you’ll need a free account.
+
+Right now we’re in beta, so access is invite-only. Just send us an email and we’ll reply with a code to get you set up.
 
 ## Organization Accounts
 
-Organizations can request an "Organization Account" by contacting us via email. Upon verification, we will provide access and instructions on utilizing your account.
+If you’re running a group, brand, or team, you can request an Organization Account. Reach out by email, and once we verify you, we’ll walk you through the setup.
 
 ## Easy Video Embedding
 
-Our video player can be easily embedded into any website. Click the options button on the right, select "Embed Video," and copy the provided HTML code.
+Want to use PrizVideo on your own site? No problem. Open the video options, click “Embed Video,” and copy the HTML snippet. You don't need to worry about anything, it’s ready to go.
 
 ### Embedding Guide
 
-[Coming Soon - A detailed guide on embedding videos]
+Coming soon.
 
-## Advanced Search with Orbito 2.0
+## Search (Orbito 2.0)
 
-PrizVideo's search engine, Orbito 2.0, delivers precise video search results, enhancing your PrizVideo experience.
+Our search system, Orbito 2.0, is built to help you find the videos you actually want fast and without the usual noise.
