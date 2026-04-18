@@ -308,8 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateConnectionStatus() {
     const message = navigator.onLine
-      ? "Uh oh—that page doesn't exist. Either go back to the home page or try again later."
-      : "Uh oh—that page doesn't exist. Either go back to the home page or try again later.";
+      ? "Uh oh... that page doesn't exist. Either go back to the home page or try again later."
+      : "Uh oh... that page doesn't exist. Either go back to the home page or try again later.";
     
     if (infoTextBox) {
       infoTextBox.innerHTML = message;

@@ -25,6 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
       text: "#ffffff",
       infoBox: "#1a1a1a",
       menuBackground: "#1a1a1a"
+    },
+    midnight: {
+      background: "#020202",
+      text: "#ffffff",
+      infoBox: "#1a1a1a",
+      menuBackground: "#1a1a1a"
     }
   };
 
