@@ -1,28 +1,40 @@
-# PrizVideo
+# PrizVideo-Test
 
-![GitHub issues](https://img.shields.io/github/issues/PrizVideo/PrizVideo-Main)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/PrizVideo/PrizVideo-Main)
-![GitHub license](https://img.shields.io/github/license/PrizVideo/PrizVideo-Main)
-![GitHub last commit](https://img.shields.io/github/last-commit/PrizVideo/PrizVideo-Main)
+Welcome to the PrizVideo-Test repository. This repo is mainly used for testing and trying out new features, integrations, and updates for PrizVideo.
 
-Welcome to PrizVideo, the premier online video broadcasting platform designed to offer an ad-free viewing experience. Our advanced algorithm ensures you receive high-quality video recommendations tailored to your preferences.
+## Purpose
 
-## Watch Without Hassle
+This repository acts as a sandbox where we can:
 
-Enjoy watching, liking, and commenting on videos without the need for an account. To upload videos, a free account is required. During the beta stage, please email us to join. We will respond with an access code to activate your account.
+- Try out new ideas and features
+- Test integrations and APIs
+- Experiment with workflows before pushing updates to the main project
 
-## Organization Accounts
+## Structure
 
-Organizations can request an "Organization Account" by contacting us via email. Upon verification, we will provide access and instructions on utilizing your account.
+- ../watch: Will eventually contain the code for the watch page
+- Root files: Includes the homepage, license, and core JavaScript files
 
-## Easy Video Embedding
+## Usage
 
-Our video player can be easily embedded into any website. Click the options button on the right, select "Embed Video," and copy the provided HTML code.
+1. Clone the repository:
+   `git clone https://github.com/PrizVideo/PrizVideo-Test.git`
 
-### Embedding Guide
+2. Go into the project folder:
+   `cd PrizVideo-Test`
 
-[Coming Soon - A detailed guide on embedding videos]
+3. When available, you will be able to test the watch page inside the ../watch directory
 
-## Advanced Search with Orbito 2.0
+## Contributions
 
-PrizVideo's search engine, Orbito 2.0, delivers precise video search results, enhancing your PrizVideo experience.
+Contributions are welcome if you want to help improve or expand the repo.
+
+To contribute:
+
+1. Fork the repository
+2. Create a new branch for your change
+3. Open a pull request with a clear description of what you did
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
